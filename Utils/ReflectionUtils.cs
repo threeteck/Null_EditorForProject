@@ -10,7 +10,9 @@ namespace DataGate.Utils
         public static VariableInfo ToVariableInfo(this MemberInfo memberInfo)
             => new VariableInfo(memberInfo);
 
-        public static IEnumerable<VariableInfo> GetVariables(this Type type, bool hasPublicSet = true, bool hasPublicGet = true, BindingFlags bindingFlags = BindingFlags.Instance)
+        public static IEnumerable<VariableInfo> GetVariables(this Type type, bool hasPublicSet = true,
+            bool hasPublicGet = true,
+            BindingFlags bindingFlags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
         {
             foreach (var f in type.GetFields(bindingFlags).Where(f => f.IsPublic || !hasPublicGet || !hasPublicSet))
             {
