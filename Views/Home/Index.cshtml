@@ -1,0 +1,12 @@
+﻿@model TestViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    string sas = "sdf";
+}
+
+<div class="">
+    <form asp-antiforgery="true" asp-action="Index">
+        @Html.SimpleEditorFor(m => m)
+        <input type="submit" />
+    </form>
+</div>
